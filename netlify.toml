@@ -2,16 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# Don't redirect assets - let them pass through
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-# Redirect all other routes to index.html for SPA routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+# Note: Redirects are handled by _redirects file in public folder
+# This ensures assets are not redirected and SPA routing works correctly
 

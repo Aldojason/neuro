@@ -1,4 +1,4 @@
-# Don't redirect assets - let them pass through
+# Serve assets directly without redirect
 /assets/*    200
 
 # Redirect all other routes to index.html for SPA routing
