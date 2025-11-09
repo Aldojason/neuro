@@ -2,4 +2,6 @@
 /assets/*    200
 
 # Redirect all other routes to index.html for SPA routing
+# Note: Netlify automatically serves static files that exist, so this only
+# applies to routes that don't match actual files
 /*    /index.html   200
