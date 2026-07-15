@@ -5,7 +5,7 @@ AI-powered neurological screening platform for early detection of Alzheimer's, P
 **Live Demo:** <!-- Add your live URL below -->
 
 ```
-https://your-live-link-here.netlify.app
+[https://your-live-link-here.netlify.app](https://neuroprediction.netlify.app/)
 ```
 
 > **Disclaimer:** This app is for educational and screening purposes only. It does not provide a medical diagnosis or replace professional medical advice.
