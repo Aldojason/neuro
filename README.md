@@ -112,10 +112,12 @@ npm install
 
 Create a `.env` file in the project root if you need local overrides, but do not commit secrets.
 
-For the secure Gemini setup, the frontend does not use a client-side API key. Instead, Netlify Functions call Gemini using the server-side environment variable `GEMINI_API_KEY`.
+For the secure Gemini setup, the frontend does not use a client-side API key. Instead, Netlify Functions call Gemini using a server-side environment variable such as `NEURO_KEY` or `GEMINI_API_KEY`.
 
 ```bash
 # Netlify site settings (not committed to Git)
+NEURO_KEY=your_gemini_api_key_here
+# or
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 

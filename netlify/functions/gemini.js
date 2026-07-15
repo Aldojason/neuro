@@ -18,7 +18,7 @@ exports.handler = async function (event) {
       };
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.NEURO_KEY || process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return {
         statusCode: 500,
