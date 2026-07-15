@@ -1,7 +1,11 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
 
 # Note: Redirects are handled by _redirects file in public folder
 # This ensures assets are not redirected and SPA routing works correctly
+
+[functions]
+  node_bundler = "esbuild"
 

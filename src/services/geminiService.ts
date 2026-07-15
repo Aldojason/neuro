@@ -1,10 +1,4 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GEMINI_CONFIG, getGeminiApiKey } from '../config/gemini';
-
-// Initialize Gemini AI
-const apiKey = getGeminiApiKey();
-const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
-const model = genAI ? genAI.getGenerativeModel({ model: GEMINI_CONFIG.model }) : null;
+import { GEMINI_CONFIG } from '../config/gemini';
 
 export interface TestResult {
   id: string;
@@ -37,17 +31,24 @@ export interface AITestQuestion {
 
 class GeminiService {
   private async generateContent(prompt: string): Promise<string> {
-    if (!model) {
-      throw new Error('Gemini API not configured. Please set your VITE_GEMINI_API_KEY environment variable.');
-    }
-    
     try {
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      return response.text();
+      const response = await fetch(GEMINI_CONFIG.apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt, model: GEMINI_CONFIG.model })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Gemini proxy request failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.text || '';
     } catch (error) {
       console.error('Gemini API Error:', error);
-      throw new Error('Failed to generate AI insights. Please check your API key.');
+      throw new Error('Failed to generate AI insights. Please try again later.');
     }
   }
 
